@@ -2,13 +2,15 @@ function postPost() {
     let username = document.getElementById("username").value;
     let message = document.getElementById("message").value;
     let url = document.getElementById("url").value;
+    let timestamp = Date.now();
     document.cookie = url;
     console.log("Set URL cookie to " + url);
     fetch(url + "api/makepost", {
         method: "POST",
         body: JSON.stringify({
             "name": username,
-            "message": message
+            "message": message,
+            "timestamp": timestamp
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8"

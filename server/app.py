@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from flask_cors import CORS
-import random, string, time
+import random, string
 
 cred = credentials.Certificate('serviceAccountKey.json')
 # create serviceAccountKey in running directory
@@ -32,7 +32,6 @@ def getPosts():
 def makePost():
     data = request.json
     ref = db.reference('/messages/')
-    timestamp = int(time.time())
     id = "-" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=19))
     name = str(data.get("name"))
     if name == "None" or "":
@@ -40,6 +39,7 @@ def makePost():
     else:
         name = name + " (Wegogo)"
     message = str(data.get("message"))
+    timestamp = str(data.get("timestamp"))
     print(message)
     id_ref = ref.child(id)
     id_ref.set({
@@ -48,5 +48,4 @@ def makePost():
         'likes': 0,
         'timestamp': timestamp
     })
-    time.sleep(3)
     return f"Created {id}"
