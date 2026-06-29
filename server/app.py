@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, request
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+from flask_cors import CORS
+import random, string, time
 
 cred = credentials.Certificate('serviceAccountKey.json')
 # create serviceAccountKey in running directory
@@ -10,6 +12,7 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://amazing-name-default-rtdb.europe-west1.firebasedatabase.app' # put in your db url
 })
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
@@ -27,4 +30,22 @@ def getPosts():
 
 @app.route("/api/makepost", methods=["POST"])
 def makePost():
-    return "soon"
+    data = request.json
+    ref = db.reference('/messages/')
+    timestamp = int(time.time())
+    id = "-" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=19))
+    name = str(data.get("name"))
+    if name == "None":
+        name = "Anonymous (Wegogo)"
+    else:
+        name = name + " (Wegogo)"
+    message = str(data.get("message"))
+    print(message)
+    id_ref = ref.child(id)
+    id_ref.set({
+        'name': name,
+        'message': message,
+        'likes': 0,
+        'timestamp': timestamp
+    })
+    return f"Created {id}"

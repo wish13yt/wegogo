@@ -9,14 +9,25 @@
             text-align: center;
             color: white;
         }
-        body {
-            background-color: gray;
+        body, button {
+            background-color: #1f1f1f;
+        }
+        textarea, input {
+            color: #1f1f1f;
         }
     </style>
 </head>
-<body>
-    <!-- this will fetch from server, not firebase -->
+<body onload="getPosts()">
     <h1>Wegogo</h1>
-    <p>Coming soon</p>
+    <div>
+        <textarea autocomplete="none" id="username" maxlength="15" placeholder="name (optional) + see rule 5"></textarea><br>
+        <!--<button type="button" id="save-name-button">save</button><br>-->
+        <textarea id="message" maxlength="212" placeholder="text" required></textarea><br>
+        <button onclick="postPost()">Send your masterpiece</button>
+        <button id="greg-button">greg</button>
+    </div>
+    <ul id="messages"></ul>
+    <script src="js/postpost.js"></script>
+    <script src="js/getposts.js"></script>
 </body>
 </html>
