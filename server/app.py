@@ -22,13 +22,13 @@ def index():
 def apiIndex():
     return "Ello, mate! This fine endpoint is an API for Wegogo. Go to /api/posts to GET posts, /api/makepost to POST posts.", 200
 
-@app.route("/api/posts", methods=["GET", "OPTIONS"])
+@app.route("/api/posts", methods=["GET"])
 def getPosts():
     ref = db.reference('/messages/')
     posts = ref.get()
     return posts, 200
 
-@app.route("/api/makepost", methods=["POST", "OPTIONS"])
+@app.route("/api/makepost", methods=["POST"])
 def makePost():
     data = request.json
     ref = db.reference('/messages/')
