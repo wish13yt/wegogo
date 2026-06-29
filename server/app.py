@@ -35,7 +35,7 @@ def makePost():
     timestamp = int(time.time())
     id = "-" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=19))
     name = str(data.get("name"))
-    if name == "None":
+    if name == "None" or "":
         name = "Anonymous (Wegogo)"
     else:
         name = name + " (Wegogo)"
@@ -48,4 +48,5 @@ def makePost():
         'likes': 0,
         'timestamp': timestamp
     })
+    time.sleep(3)
     return f"Created {id}"
