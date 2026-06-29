@@ -35,9 +35,9 @@ def makePost():
     id = "-" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=19))
     name = str(data.get("name"))
     if name == "None" or "":
-        name = "Anonymous (Wegogo)"
+        name = "Anonymous@wegogo"
     else:
-        name = name + " (Wegogo)"
+        name = name + "@wegogo"
     message = str(data.get("message"))
     timestamp = str(data.get("timestamp"))
     print(message)
