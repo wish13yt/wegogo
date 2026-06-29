@@ -1,8 +1,14 @@
-from dotenv import load_dotenv
 from flask import Flask
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+
+cred = credentials.Certificate('serviceAccountKey.json')
+# create serviceAccountKey in running directory
+
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://amazing-name.firebaseio.com' # put in your db url
+})
 
 app = Flask(__name__)
 
