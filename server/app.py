@@ -34,10 +34,13 @@ def makePost():
     ref = db.reference('/messages/')
     id = "-" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=19))
     name = str(data.get("name"))
+    name = name.lower()
     if name == "None" or "":
-        name = "Anonymous@wegogo"
+        name = "@anonymous@wegogo"
     else:
-        name = name + "@wegogo"
+        name = "@" + name + "@wegogo"
+    if name == "@wegogo@wegogo":
+        name = "@anonymous@wegogo"
     message = str(data.get("message"))
     timestamp = str(data.get("timestamp"))
     print(message)
