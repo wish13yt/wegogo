@@ -16,17 +16,17 @@ CORS(app)
 
 @app.route("/")
 def index():
-    return "Wegogo is a Flask-based version of AMAZING NAME (Originally by @nameswastaken on GitHub) created by Wish.<br>Please visit the client to post or view posts.", 200
+    return "Wegogo is a Flask-based version of AMAZING NAME (Originally by @nameswastaken on GitHub) created by Wish.<br>Please visit the client to post or view posts."
 
 @app.route("/api/")
 def apiIndex():
-    return "Ello, mate! This fine endpoint is an API for Wegogo. Go to /api/posts to GET posts, /api/makepost to POST posts.", 200
+    return "Ello, mate! This fine endpoint is an API for Wegogo. Go to /api/posts to GET posts, /api/makepost to POST posts."
 
 @app.route("/api/posts", methods=["GET"])
 def getPosts():
     ref = db.reference('/messages/')
     posts = ref.get()
-    return posts, 200
+    return posts
 
 @app.route("/api/makepost", methods=["POST"])
 def makePost():
@@ -48,4 +48,4 @@ def makePost():
         'likes': 0,
         'timestamp': timestamp
     })
-    return f"Created {id}", 200
+    return f"Created {id}"
