@@ -1,12 +1,14 @@
 function getPosts() {
     let posts = ''
     let url = document.getElementById("url").value;
+    document.cookie = url;
+    console.log("Set URL cookie to " + url);
     fetch(url + "api/posts", {
         method: "GET",
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
-    }) 
+    });
     .then(res => res.json())
     .then(data => printIt(data))
 }

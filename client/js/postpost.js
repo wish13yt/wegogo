@@ -2,6 +2,8 @@ function postPost() {
     let username = document.getElementById("username").value;
     let message = document.getElementById("message").value;
     let url = document.getElementById("url").value;
+    document.cookie = url;
+    console.log("Set URL cookie to " + url);
     fetch(url + "api/makepost", {
         method: "POST",
         body: JSON.stringify({
@@ -17,6 +19,7 @@ function postPost() {
 }
 function gregGreg() {
     let url = document.getElementById("url").value;
+    document.cookie = "default=" + url;
     let username = "greg";
     let message = "GREG ALERT!!";
     fetch(url + "api/makepost", {
