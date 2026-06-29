@@ -8,7 +8,7 @@ function getPosts() {
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
-    });
+    })
     .then(res => res.json())
     .then(data => printIt(data))
 }
