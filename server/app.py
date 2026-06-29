@@ -46,6 +46,7 @@ def makePost():
         'name': name,
         'message': message,
         'likes': 0,
-        'timestamp': timestamp
+        'timestamp': timestamp,
+        'service': "wegogo"
     })
     return f"Created {id}"
