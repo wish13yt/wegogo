@@ -15,7 +15,6 @@ function postPost() {
         }
     });
     console.log("POSTed!");
-    window.location.reload();
 }
 function gregGreg() {
     let url = document.getElementById("url").value;
@@ -33,5 +32,4 @@ function gregGreg() {
         }
     });
     console.log("POSTed!");
-    window.location.reload();
 }
