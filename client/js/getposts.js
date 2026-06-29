@@ -1,6 +1,7 @@
 function getPosts() {
     let posts = ''
-    fetch("http://127.0.0.1:5000/api/posts", {
+    let url = document.getElementById("url").value;
+    fetch(url + "api/posts", {
         method: "GET",
         headers: {
             "Content-type": "application/json; charset=UTF-8"

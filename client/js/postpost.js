@@ -1,7 +1,8 @@
 function postPost() {
     let username = document.getElementById("username").value;
     let message = document.getElementById("message").value;
-    fetch("http://127.0.0.1:5000/api/makepost", {
+    let url = document.getElementById("url").value;
+    fetch(url + "api/makepost", {
         method: "POST",
         body: JSON.stringify({
             "name": username,
@@ -15,9 +16,10 @@ function postPost() {
     window.location.reload();
 }
 function gregGreg() {
+    let url = document.getElementById("url").value;
     let username = "greg";
     let message = "GREG ALERT!!";
-    fetch("http://127.0.0.1:5000/api/makepost", {
+    fetch(url + "api/makepost", {
         method: "POST",
         body: JSON.stringify({
             "name": username,

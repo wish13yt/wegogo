@@ -17,15 +17,18 @@
         }
     </style>
 </head>
-<body onload="getPosts()">
+<body>
     <h1>Wegogo</h1>
     <a href="info.html"><button>Information Center</button></a> <a href="rules.html"><button>Rules</button></a>
+    <p>The URL to post to must include a slash at the end and https:// (or http://) at the beginning.</p>
     <p>By posting, you agree to our <a href="tos.html">Rules</a>.</p>
     <div>
         <textarea required autocomplete="none" id="username" maxlength="15" placeholder="name (see rule 5)"></textarea><br>
         <!--<button type="button" id="save-name-button">save</button><br>-->
         <textarea id="message" maxlength="212" placeholder="text" required></textarea><br>
+        <textarea id="url" maxlength="212" placeholder="https://example.com/" required></textarea><br>
         <button onclick="postPost()">Send your masterpiece</button>
+        <button onclick="getPosts()">Fetch posts</button>
         <button onclick="gregGreg()" id="greg-button">greg</button>
     </div>
     <hr>
