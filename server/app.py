@@ -7,9 +7,8 @@ cred = credentials.Certificate('serviceAccountKey.json')
 # create serviceAccountKey in running directory
 
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://amazing-name.firebaseio.com' # put in your db url
+    'databaseURL': 'https://amazing-name-default-rtdb.europe-west1.firebasedatabase.app' # put in your db url
 })
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -22,7 +21,9 @@ def apiIndex():
 
 @app.route("/api/posts", methods=["GET"])
 def getPosts():
-    return "soon"
+    ref = db.reference('/messages/')
+    posts = ref.get()
+    return posts
 
 @app.route("/api/makepost", methods=["POST"])
 def makePost():
