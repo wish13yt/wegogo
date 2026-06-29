@@ -18,7 +18,7 @@ function postPost() {
 }
 function gregGreg() {
     let url = document.getElementById("url").value;
-    document.cookie = "default=" + url;
+    document.cookie = url;
     let username = "greg";
     let message = "GREG ALERT!!";
     fetch(url + "api/makepost", {
