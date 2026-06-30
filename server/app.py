@@ -28,6 +28,28 @@ def getPosts():
     posts = ref.get()
     return posts
 
+@app.route("/api/like", methods=["POST"])
+def likePost():
+    data = request.json
+    id = str(data.get("pid"))
+    ref = db.reference('/messages/')
+    likecount = ref.order_by_child('likes').get()
+    newlikecount = likecount + 1
+    id_ref = ref.child(id)
+    id_ref.update({'likes': newlikecount})
+    return f"Liked post {id}"
+
+@app.route("/api/unlike", methods=["POST"])
+def heartAttack():
+    data = request.json
+    id = str(data.get("pid"))
+    ref = db.reference('/messages/')
+    likecount = ref.order_by_child('likes').get()
+    newlikecount = likecount - 1
+    id_ref = ref.child(id)
+    id_ref.update({'likes': newlikecount})
+    return f"Unliked post {id}"
+
 @app.route("/api/makepost", methods=["POST"])
 def makePost():
     data = request.json

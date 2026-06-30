@@ -80,4 +80,5 @@ function gregGreg() {
         }
     });
     console.log("POSTed!");
+    getPosts();
 }
