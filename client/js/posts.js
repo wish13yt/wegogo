@@ -27,7 +27,7 @@ let printIt = (data) => {
         let g = document.createElement("p");
         document.body.appendChild(g);
         g.id = curkey;
-        document.getElementById(curkey).innerHTML = `${data[posts]["name"]}: ${data[posts]["message"]} <button id="${curkey}" onclick="like(this.id)">❤️ ${data[posts]["likes"]}</button>`;
+        document.getElementById(curkey).innerHTML = `${data[posts]["name"]}: ${data[posts]["message"]} <button id="${curkey}" disabled onclick="like(this.id)">❤️ ${data[posts]["likes"]} (SOON)</button>`;
         keynum = keynum + 1;
     };
 }
