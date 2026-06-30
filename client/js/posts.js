@@ -1,6 +1,11 @@
 function getPosts() {
     let posts = ''
+    const urlField = document.getElementById("url");
     let url = document.getElementById("url").value;
+    if (url.endsWith("/") == false) {
+        url = url + "/"
+        urlField.textContent = url;
+    };
     document.cookie = url;
     console.log("Set URL cookie to " + url);
     fetch(url + "api/posts", {
@@ -10,7 +15,7 @@ function getPosts() {
         }
     })
     .then(res => res.json())
-    .then(data => printIt(data))
+    .then(data => printIt(data));
 }
 let printIt = (data) => {
     console.log(data)
@@ -32,7 +37,12 @@ function postPost() {
     let username = document.getElementById("username").value;
     let message = document.getElementById("message").value;
     let url = document.getElementById("url").value;
+    const urlField = document.getElementById("url");
     let timestamp = Date.now();
+    if (url.endsWith("/") == false) {
+        url = url + "/";
+        urlField.textContent = url;
+    };
     document.cookie = url;
     console.log("Set URL cookie to " + url);
     fetch(url + "api/makepost", {
@@ -47,10 +57,15 @@ function postPost() {
         }
     });
     console.log("POSTed!");
-    getPosts()
+    getPosts();
 }
 function gregGreg() {
     let url = document.getElementById("url").value;
+    const urlField = document.getElementById("url");
+    if (url.endsWith("/") == false) {
+        url = url + "/";
+        urlField.textContent = url;
+    };
     document.cookie = url;
     let username = "greg";
     let message = "GREG ALERT!!";

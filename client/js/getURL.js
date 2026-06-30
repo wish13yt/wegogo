@@ -1,9 +1,12 @@
 function getURL() {
-    let url = document.cookie;
+    const urlParams = new URLSearchParams(window.location.search);
+    let urlPar = urlParams.get('url');
+    let url = ''
     const urlField = document.getElementById("url");
-    if (url == "") {
-        return;
+    if (urlPar !== "") {
+        url = urlPar;
     } else {
-        urlField.textContent = url
+        url = document.cookie;
     };
+    urlField.textContent = url
 }
