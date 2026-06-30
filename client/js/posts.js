@@ -20,17 +20,15 @@ function getPosts() {
 let printIt = (data) => {
     console.log(data)
     let keynum = 0;
-    let postnum = 1;
     for (const posts of Object.keys(data)) {
         let keys = Object.keys(data);
         let curkey = keys[keynum];
         console.log(curkey);
         let g = document.createElement("p");
-        document.body.appendChild(g)
-        g.id = "post" + postnum.toString();
-        document.getElementById("post" + postnum.toString()).innerText = data[posts]["name"] + ": " + data[posts]["message"];
+        document.body.appendChild(g);
+        g.id = curkey;
+        document.getElementById(curkey).innerHTML = `${data[posts]["name"]}: ${data[posts]["message"]} <button id="${curkey}" onclick="like(this.id)">❤️ ${data[posts]["likes"]}</button>`;
         keynum = keynum + 1;
-        postnum = postnum + 1;
     };
 }
 function postPost() {

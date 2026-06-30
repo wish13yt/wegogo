@@ -36,7 +36,11 @@ def likePost():
     likecount = ref.order_by_child('likes').get()
     newlikecount = likecount + 1
     id_ref = ref.child(id)
-    id_ref.update({'likes': newlikecount})
+    freerobux = id_ref.get()
+    #id_ref.update({
+    #    freerobux,
+    #    "likes": newlikecount
+    #})
     return f"Liked post {id}"
 
 @app.route("/api/unlike", methods=["POST"])
@@ -70,8 +74,8 @@ def makePost():
     id_ref.set({
         'name': name,
         'message': message,
-        'likes': 0,
         'timestamp': timestamp,
-        'service': "wegogo"
+        'service': "wegogo",
+        "likes": 0
     })
     return f"Created {id}"

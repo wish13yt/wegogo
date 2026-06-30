@@ -1,9 +1,9 @@
 function getURL() {
     const urlParams = new URLSearchParams(window.location.search);
-    let urlPar = urlParams.get('url');
     let url = ''
     const urlField = document.getElementById("url");
-    if (urlPar !== "") {
+    if (urlParams.has('url')) {
+        let urlPar = urlParams.get('url');
         url = urlPar;
     } else {
         url = document.cookie;
